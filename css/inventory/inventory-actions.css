@@ -1,0 +1,16 @@
+/* ============================================================================
+   css/inventory/inventory-actions.css
+   Inventory action links (Create Invoice).
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Create Invoice */
+.action-link {
+    color: #2b6cb0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}

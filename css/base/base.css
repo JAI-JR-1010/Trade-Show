@@ -1,0 +1,41 @@
+/* ============================================================================
+   css/base/base.css
+   Reset, html/body, headings, page container and title.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    background: #ffffff;
+    margin: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    zoom: 0.85;
+}
+
+h1 {
+    margin: 0;
+    font-size: 20px;
+    padding: 10px 20px 0px 5px;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    ;
+}
+
+.page-title {
+    margin-bottom: 20px;
+    font-size: 16px;
+}

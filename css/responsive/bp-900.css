@@ -1,0 +1,38 @@
+/* ============================================================================
+   css/responsive/bp-900.css
+   Responsive overrides: Tablet, up to 900px.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+
+    .imt-header {
+
+        grid-template-columns: 1fr;
+
+        align-items: stretch;
+    }
+
+    .imt-top-fields {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .imt-field-group {
+        width: 100%;
+    }
+
+    .imt-field-group input {
+        width: 100%;
+    }
+
+    .imt-search-wrap {
+        width: 100%;
+    }
+
+    .imt-header .btn-blue {
+        width: 100%;
+    }
+}

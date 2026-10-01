@@ -1,0 +1,82 @@
+/* ============================================================================
+   css/components/pagination.css
+   Pagination buttons (.pg-btn) used by every table.
+   NOTE: was last in the original file (after the responsive rules); keep it last.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* ==========================================
+   PAGINATION COMPONENT STYLES
+   ========================================== */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding: 6px 12px;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-info {
+    font-size: 11px;
+    color: #64748b;
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.pg-btn {
+    padding: 5px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #475569;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.pg-btn:hover:not(:disabled):not(.active) {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    transform: translateY(-1px);
+}
+
+.pg-btn.active {
+    background: #7c3aed;
+    color: #ffffff;
+    font-weight: 600;
+    border-color: #7c3aed;
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+}
+
+.pg-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+    box-shadow: none;
+}
+
+.pg-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 32px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: bold;
+}

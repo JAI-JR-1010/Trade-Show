@@ -1,0 +1,48 @@
+/* ============================================================================
+   css/intertransfer/imt-header.css
+   Inter-Movement Tracking: header, top fields, field groups.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* HEADER */
+.imt-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: nowrap;
+    overflow: visible;
+    position: relative;
+    z-index: 100;
+}
+
+   /* TOP FIELDS */
+.imt-top-fields {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+   /* FIELD GROUP  */
+.imt-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.imt-field-group label {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.imt-field-group input {
+    width: 180px;
+    height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 13px;
+}

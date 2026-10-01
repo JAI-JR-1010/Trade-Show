@@ -1,0 +1,113 @@
+/* ============================================================================
+   css/trade-show/overview-layout.css
+   Overview page layout: left form panel, right sidebar, notes box, upload button, file links.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+.main-layout {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
+    /* padding-left: 10px; */
+
+    /* max-width:1400px; */
+    /* margin:auto; */
+}
+
+/* LEFT FORM AREA */
+.left-panel {
+    flex: 3;
+    padding-right: 30px;
+    border-right: 1px solid #ddd;
+}
+
+/* RIGHT SIDEBAR */
+.right-panel {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 30px;
+}
+
+.right-panel {
+    width: 350px;
+    flex-shrink: 0;
+}
+
+.tabs-placeholder {
+    height: 42px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.column-box {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    padding-top: 0px;
+    min-height: calc(95vh - 95px);
+}
+
+/* Notes Card */
+.notes-box {
+    width: 100%;
+    min-height: 80px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-title {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 3px solid #2b6cb0;
+}
+
+.upload-btn {
+    margin-top: 10px;
+    padding: 8px 18px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-btn:hover {
+    background: #1f4e85;
+}
+
+.file-link {
+    color: #2b6cb0;
+    cursor: pointer;
+}
+
+.card p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.card h4 {
+    margin-bottom: 10px;
+}
+
+.user-icon {
+    margin-right: 5px;
+}
+
+.card hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 10px 0;
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}

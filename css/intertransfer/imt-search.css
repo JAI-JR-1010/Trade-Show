@@ -1,0 +1,133 @@
+/* ============================================================================
+   css/intertransfer/imt-search.css
+   Inter-Movement Tracking: lot search box, selected tags, dropdown, overlay fixes.
+   NOTE: also holds .section-card, #intertransfer-section and .imt-header .btn-blue.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* SEARCH AREA */
+.imt-search-wrap {
+    width: 420px;
+    min-width: 420px;
+    position: relative;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+/* SEARCH CONTAINER */
+.imt-selected-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 42px;
+
+    padding: 6px 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    background: #fff;
+}
+
+/* SEARCH INPUT */
+#imtLotSearch {
+    border: none;
+    outline: none;
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    height: 28px;
+    padding: 2px 4px;
+    font-size: 13px;
+    background: transparent;
+}
+
+.section-card {
+    overflow: visible !important;
+}
+
+   /* TAGS */
+.imt-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #e8f0fe;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    min-height: 28px;
+    white-space: nowrap;
+}
+
+.imt-tag span {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+   /* DROPDOWN */
+.imt-dropdown {
+     position: fixed !important;
+
+    width: 820px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    z-index: 9999999;
+
+    display: none;
+}
+
+.imt-dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.imt-dropdown-item:hover {
+    background: #f3f3f3;
+}
+
+#intertransfer-section {
+    overflow: visible !important;
+}
+
+.imt-header .btn-blue {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* FIX DROPDOWN OVERLAY */
+.imt-header,
+.imt-search-wrap,
+.imt-selected-container,
+.section-card,
+#intertransfer-section {
+    overflow: visible !important;
+    position: relative;
+}
+
+/* DROPDOWN ALWAYS ABOVE TABLE
+.imt-dropdown {
+    z-index: 999999 !important;
+} */

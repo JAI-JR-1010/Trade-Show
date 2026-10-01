@@ -1,0 +1,55 @@
+/* ============================================================================
+   css/components/choices-overrides.css
+   Choices.js (dropdown library) look-and-feel inside form groups.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Fix Choices.js container */
+.choices__inner {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Match Choices dropdowns with standard form inputs */
+.form-group .choices__inner {
+    background-color: #ecf9ee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 32px;
+    padding: 2px 8px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-group .choices:hover .choices__inner {
+    background-color: #ecf9ee;
+}
+
+.form-group .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 4px;
+}
+
+.form-group .choices.is-focused .choices__inner,
+.form-group .choices.is-open .choices__inner {
+    background-color: #e6f8e7;
+    border: 1px solid #28a745;
+    box-shadow: 0 0 4px rgba(40, 167, 69, 0.4);
+    border-radius: 4px;
+}
+
+.form-group .choices__list--single {
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure the inner input inside choices doesn't inherit oversized .form-group input styles */
+.form-group .choices__input {
+    background-color: transparent !important;
+    border: none !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}

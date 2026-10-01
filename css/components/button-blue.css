@@ -1,0 +1,36 @@
+/* ============================================================================
+   css/components/button-blue.css
+   Blue action button (.btn-blue) used on Inventory, Scan Log and Inter-Movement tabs.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* For the Button */
+.btn-blue {
+    background: #0ac93d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.btn-blue:hover {
+    background: #1f4e85;
+    transform: translateY(-1px);
+}
+
+.btn-blue:hover {
+    background: #1f4e85;
+    transform: translateY(-1px);
+}
+
+.btn-blue:active {
+    transform: scale(0.97);
+}

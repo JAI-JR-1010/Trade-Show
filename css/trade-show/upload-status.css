@@ -1,0 +1,72 @@
+/* ============================================================================
+   css/trade-show/upload-status.css
+   Documents tab: upload status panel, progress bar, queued file list.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+.upload-status-panel {
+    background: #f8fbff;
+    border: 1px solid #bfdcff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #0f172a;
+}
+.upload-status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+#uploadStatusMessage {
+    font-weight: 700;
+}
+#uploadStatusSummary {
+    color: #475569;
+    font-size: 11px;
+}
+.upload-progress-track {
+    width: 100%;
+    background: #e2e8f0;
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.upload-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #2b8aef, #38bdf8);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+.upload-status-file-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 180px;
+    overflow-y: auto;
+    display: grid;
+    gap: 6px;
+}
+.upload-status-file-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 10px;
+    gap: 10px;
+    font-size: 12px;
+}
+.upload-status-file-list li span.status-badge {
+    color: #0f172a;
+    background: #dbeafe;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+}

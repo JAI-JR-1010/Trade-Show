@@ -1,0 +1,38 @@
+/* ============================================================================
+   css/components/main-tabs.css
+   Top-level section tabs and section show/hide.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+.main-tabs {
+    /* max-width: 1477px;
+    margin: auto; */
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 10px;
+    display: flex;
+    gap: 20px;
+    /* border-bottom:1px solid #ddd; */
+    margin-bottom: 20px;
+}
+
+.main-tab {
+    padding: 10px 0;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+}
+
+.main-tab.active {
+    color: #2b6cb0;
+    border-bottom: 3px solid #2b6cb0;
+    font-weight: 500;
+}
+
+.main-section {
+    display: none;
+}
+
+.main-section.active {
+    display: block;
+}

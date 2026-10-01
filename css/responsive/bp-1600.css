@@ -1,0 +1,20 @@
+/* ============================================================================
+   css/responsive/bp-1600.css
+   Responsive overrides: screens up to 1600px.
+   NOTE: responsive files must stay AFTER all component CSS so they can override it.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1600px) {
+
+    .imt-search-wrap {
+        flex: 1;
+        min-width: 320px;
+    }
+
+    .imt-header {
+        gap: 10px;
+    }
+}

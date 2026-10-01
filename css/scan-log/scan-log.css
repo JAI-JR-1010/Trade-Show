@@ -1,0 +1,95 @@
+/* ============================================================================
+   css/scan-log/scan-log.css
+   Scan Log tab: filter bar and table.
+   NOTE: this section also holds rules that apply app-wide (table, th, td, .btn-blue:disabled) and a .filter-section override. They are kept here to preserve the original cascade order.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* ========================================================================================== */
+/* Scan log */
+.filter-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-section select {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+.status-column {
+    font-weight: 500;
+}
+
+.col-sr {
+    width: 60px;
+}
+
+.col-event {
+    width: 180px;
+}
+
+.col-tsid {
+    width: 120px;
+}
+
+.col-lot {
+    width: 250px;
+}
+
+.col-description {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+td,
+th {
+    white-space: nowrap;
+}
+
+table th:nth-child(n+5) {
+    font-weight: bold;
+}
+
+.btn-blue:disabled {
+    background: #a0a0a0;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Better styling for the choices.js search input inside the dropdown */
+.form-group .choices__list--dropdown .choices__input {
+    padding: 4px 8px !important;
+    margin: 4px auto !important;
+    border: 1px solid #ccc !important;
+    background-color: #f9f9f9 !important;
+    height: 28px !important;
+    width: 95% !important;
+    border-radius: 4px !important;
+    display: block !important;
+}

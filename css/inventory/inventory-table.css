@@ -1,0 +1,31 @@
+/* ============================================================================
+   css/inventory/inventory-table.css
+   Inventory items table.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Ineventory Table */
+
+.inventory-table-container {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+.inventory-table th,
+.inventory-table td {
+    border: 1px solid #d1d5db;
+    padding: 6px 8px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.inventory-table thead {
+    background-color: #f3f4f6;
+}

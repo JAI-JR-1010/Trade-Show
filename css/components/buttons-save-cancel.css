@@ -1,0 +1,35 @@
+/* ============================================================================
+   css/components/buttons-save-cancel.css
+   Save and Cancel buttons.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Save Button */
+.btn-save {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.btn-save:hover {
+    background: #218838;
+}
+
+/* Cancel Button */
+.btn-cancel {
+    background: #e5e5e5;
+    color: #333;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.btn-cancel:hover {
+    background: #d6d6d6;
+}

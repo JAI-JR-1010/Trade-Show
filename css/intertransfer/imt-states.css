@@ -1,0 +1,27 @@
+/* ============================================================================
+   css/intertransfer/imt-states.css
+   Inter-Movement Tracking: disabled buttons and empty-state message.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Bulk button disabled style */
+#bulkUpdateBtn:disabled {
+
+    opacity: 0.6;
+}
+
+/* Disabled */
+.btn-blue:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+   /* EMPTY STATE */
+.imt-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 15px;
+    color: #666;
+    background: #fafafa;
+}

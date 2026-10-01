@@ -1,0 +1,53 @@
+/* ============================================================================
+   css/forms/form-group-inputs.css
+   Form-group input/select hover and focus styling (overrides form-controls.css).
+   Must stay AFTER forms/form-controls.css and components/choices-overrides.css.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* brweafdvbf gbgnrefgb */
+/* Inputs inside form-group only */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #000;
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+/* Dropdowns inside form-group */
+.form-group select {
+    background-color: #ecf9ee;
+}
+
+.form-group select option {
+    background-color: #ecf9ee;
+    color: #0f172a;
+}
+
+.form-group select option:hover,
+.form-group select option:focus,
+.form-group select option:checked {
+    background-color: #d6f7db;
+    color: #0f172a;
+}
+
+/* Hover effect */
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    background-color: #eaf7e9;
+}
+
+/* Focus effect */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    background-color: #e6f8e7;
+    border-color: #28a745;
+    /* green highlight */
+    box-shadow: 0 0 4px rgba(40, 167, 69, 0.2);
+    outline: none;
+}

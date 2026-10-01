@@ -1,0 +1,56 @@
+/* ============================================================================
+   css/intertransfer/imt-bulk-popup.css
+   Inter-Movement Tracking: Bulk Update popup.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* BULK POPUP */
+.bulk-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.bulk-popup {
+    background: #fff;
+    width: 600px;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.bulk-popup h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.bulk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.bulk-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bulk-field select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.bulk-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}

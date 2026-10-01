@@ -1,0 +1,26 @@
+/* ============================================================================
+   css/responsive/bp-768.css
+   Responsive overrides: Mobile, up to 768px.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .custom-table {
+        min-width: 1000px;
+    }
+
+    .bulk-popup {
+        width: 95%;
+    }
+
+    .bulk-grid {
+        grid-template-columns: 1fr;
+    }
+}

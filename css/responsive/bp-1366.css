@@ -1,0 +1,23 @@
+/* ============================================================================
+   css/responsive/bp-1366.css
+   Responsive overrides: Laptop, up to 1366px.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Laptop */
+@media screen and (max-width: 1366px) {
+
+    .imt-field-group input {
+        width: 160px;
+    }
+
+    .imt-search-wrap {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    .imt-header .btn-blue {
+        min-width: 100px;
+        height: 38px;
+    }
+}

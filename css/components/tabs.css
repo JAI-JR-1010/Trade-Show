@@ -1,0 +1,34 @@
+/* ============================================================================
+   css/components/tabs.css
+   Inner tabs (Event / Documents) and tab content show/hide.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Tabs */
+
+.tabs {
+    display: flex;
+    gap: 30px;
+    /* border-bottom:1px solid #ddd; */
+    margin-bottom: 15px;
+}
+
+.tab {
+    padding: 10px 0;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+}
+
+.tab.active {
+    color: #2b6cb0;
+    border-bottom: 3px solid #2b6cb0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}

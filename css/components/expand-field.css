@@ -1,0 +1,22 @@
+/* ============================================================================
+   css/components/expand-field.css
+   Responsible Team field that expands when it has 2-3 values.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Responsible Team field(Expand) */
+/* default */
+.expand-field {
+    grid-column: span 1;
+    transition: all 0.3s ease;
+}
+
+/* stay expanded if it has 2 value */
+.expand-field.two-items {
+    grid-column: span 2;
+}
+
+/* stay expanded if it has 3 value */
+.expand-field.active {
+    grid-column: span 2;
+}

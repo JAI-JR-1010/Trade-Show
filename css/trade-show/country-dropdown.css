@@ -1,0 +1,56 @@
+/* ============================================================================
+   css/trade-show/country-dropdown.css
+   Custom Country dropdown.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Country Dropdown */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+#countryInput {
+    width: 100%;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ecf9ee;
+}
+
+#countryInput:hover {
+    background-color: #eaf7e9;
+}
+
+#countryInput:focus {
+    background-color: #e6f8e7;
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 4px rgba(40, 167, 69, 0.2);
+}
+
+.dropdown-list {
+    position: absolute;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #ecf9ee;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    margin-top: 2px;
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 6px 10px;
+    cursor: pointer;
+    background: transparent;
+    color: #0f172a;
+}
+
+.dropdown-item:hover,
+.dropdown-item.selected {
+    background: #1f4e85;
+    color: #ffffff;
+}

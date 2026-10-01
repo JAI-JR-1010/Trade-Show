@@ -1,0 +1,43 @@
+/* ============================================================================
+   css/responsive/bp-1200.css
+   Responsive overrides: Small Laptop, up to 1200px.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Small Laptop */
+@media screen and (max-width: 1200px) {
+
+    .imt-header {
+
+        display: grid;
+
+        grid-template-columns:
+            170px
+            170px
+            minmax(280px, 1fr)
+            110px
+            130px;
+
+        align-items: end;
+
+        gap: 10px;
+    }
+
+    .imt-top-fields {
+        display: contents;
+    }
+
+    .imt-search-wrap {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .imt-field-group input {
+        width: 100%;
+    }
+
+    .imt-header .btn-blue {
+        width: 100%;
+        min-width: unset;
+    }
+}

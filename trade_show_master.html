@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trade Show Master</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <!-- Application styles. ORDER MATTERS: later rules override earlier ones; do not reorder. -->
+    <!-- base -->
+    <link rel="stylesheet" href="./css/base/base.css">
+    <!-- components -->
+    <link rel="stylesheet" href="./css/components/card.css">
+    <link rel="stylesheet" href="./css/components/expand-field.css">
+    <!-- forms -->
+    <link rel="stylesheet" href="./css/forms/form-controls.css">
+    <!-- trade-show -->
+    <link rel="stylesheet" href="./css/trade-show/upload-status.css">
+    <!-- components -->
+    <link rel="stylesheet" href="./css/components/tabs.css">
+    <link rel="stylesheet" href="./css/components/choices-overrides.css">
+    <!-- trade-show -->
+    <link rel="stylesheet" href="./css/trade-show/overview-layout.css">
+    <!-- components -->
+    <link rel="stylesheet" href="./css/components/buttons-save-cancel.css">
+    <link rel="stylesheet" href="./css/components/main-tabs.css">
+    <!-- trade-show -->
+    <link rel="stylesheet" href="./css/trade-show/country-dropdown.css">
+    <link rel="stylesheet" href="./css/trade-show/event-history.css">
+    <!-- inventory -->
+    <link rel="stylesheet" href="./css/inventory/inventory-toolbar.css">
+    <link rel="stylesheet" href="./css/inventory/inventory-popup.css">
+    <link rel="stylesheet" href="./css/inventory/inventory-table.css">
+    <!-- components -->
+    <link rel="stylesheet" href="./css/components/button-blue.css">
+    <!-- inventory -->
+    <link rel="stylesheet" href="./css/inventory/event-name-dropdown.css">
+    <link rel="stylesheet" href="./css/inventory/inventory-actions.css">
+    <!-- forms -->
+    <link rel="stylesheet" href="./css/forms/form-group-inputs.css">
+    <!-- scan-log -->
+    <link rel="stylesheet" href="./css/scan-log/scan-log.css">
+    <!-- intertransfer -->
+    <link rel="stylesheet" href="./css/intertransfer/imt-table.css">
+    <link rel="stylesheet" href="./css/intertransfer/imt-header.css">
+    <link rel="stylesheet" href="./css/intertransfer/imt-search.css">
+    <link rel="stylesheet" href="./css/intertransfer/imt-states.css">
+    <link rel="stylesheet" href="./css/intertransfer/imt-bulk-popup.css">
+    <link rel="stylesheet" href="./css/intertransfer/imt-saving-popup.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="./css/responsive/bp-1600.css">
+    <link rel="stylesheet" href="./css/responsive/bp-1366.css">
+    <link rel="stylesheet" href="./css/responsive/bp-1200.css">
+    <link rel="stylesheet" href="./css/responsive/bp-900.css">
+    <link rel="stylesheet" href="./css/responsive/bp-768.css">
+    <!-- components -->
+    <link rel="stylesheet" href="./css/components/pagination.css">
+</head>
+<body>
+    <h1>Trade Show</h1>
+    <div class="main-tabs">
+        <div class="main-tab active" onclick="showMainSection(this,'overview')">Overview</div>
+        <div class="main-tab" onclick="showMainSection(this,'inventory-section')">Inventory</div>
+        <div class="main-tab" onclick="showMainSection(this,'scanlog-section')">Scan Log</div>
+        <div class="main-tab" onclick="showMainSection(this,'intertransfer-section')">Inter-Movement Tracking</div>
+        <div class="main-tab" onclick="showMainSection(this,'intertransfer-log-section')">InterTracking Movement Log</div>
+    </div>
+    <div id="overview" class="main-section active">
+        <div class="main-layout">
+            <!-- LEFT SIDE -->
+            <div class="column-box left-panel">
+                <div class="container">
+                    <h2 class="page-title" style="margin-bottom: 0px;">Trade Show Master</h2>
+                    <div class="tabs">
+                        <div class="tab active">Overview</div>
+                    </div>
+                    <!-- Basic Information -->
+                    <div class="card">
+                        <h3>Basic Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Trade Show ID</label>
+                                <input type="text" id="tsid" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Trade Show Name</label>
+                                <input type="text" id="tsname">
+                            </div>
+                            <div class="form-group">
+                                <label>Trade Show Code</label>
+                                <input type="text" placeholder="If Applicable" id="tscode">
+                            </div>
+                            <div class="form-group">
+                                <label>Trade Show Location</label>
+                                <input type="text" id="tslcode">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Section -->
+                    <div class="tabs">
+                        <div class="tab active" onclick="showTab(this,'inventory')">Event</div>
+                        <div class="tab" onclick="showTab(this,'documents')">Documents</div>
+                    </div>
+                    <!-- Inventory Section -->
+                    <div id="inventory" class="tab-content active">
+                        <div class="card">
+                            <h3>Event Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <div class="custom-dropdown">
+                                        <input type="text" id="countryInput" placeholder="Search country...">
+                                        <div id="countryList" class="dropdown-list"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" id="city">
+                                </div>
+                                <div class="form-group">
+                                    <label>Venue Name</label>
+                                    <input type="text" id="vname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Venue Address</label>
+                                    <input type="text" id="vaddress">
+                                </div>
+                                <div class="form-group">
+                                    <label>Booth Number</label>
+                                    <input type="text" id="boothno">
+                                </div>
+                                <div class="form-group">
+                                    <label>Event Status</label>
+                                    <select id="eventstatus">
+                                        <option value="" selected disabled>Select Status</option>
+                                        <option>Planned</option>
+                                        <option>Active</option>
+                                        <option>Closed</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="date" id="startdate">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="date" id="enddate">
+                                </div>
+                                <div class="form-group expand-field">
+                                    <label>Responsible Team</label>
+                                    <select id="teamSelect" multiple>
+                                        <option value="option1">DUB</option>
+                                        <option value="option2">JP</option>
+                                        <option value="option3">NY</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="documents" class="tab-content">
+                        <div class="card">
+                            <h3>Upload Documents</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Document Name</label>
+                                    <select name="docName" id="docNameInput">
+                                        <option value="">Select Document Name</option>
+                                        <option value="Insurance Document">Insurance Document</option>
+                                        <option value="Shipping Documents">Shipping Documents</option>
+                                        <option value="Additional Documents">Additional Documents</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select File</label>
+                                    <input type="file" id="fileUpload1" multiple>
+                                </div>
+                            </div>
+                            <button class="upload-btn" onclick="handleDocumentUpload()">Upload</button>
+
+                            <div id="uploadStatusPanel" class="upload-status-panel" style="display:none;">
+                                <div class="upload-status-header">
+                                    <div id="uploadStatusMessage">Upload queue is ready.</div>
+                                    <div id="uploadStatusSummary"></div>
+                                </div>
+                                <div class="upload-progress-track">
+                                    <div id="uploadProgressBar" class="upload-progress-bar"></div>
+                                </div>
+                                <ul id="uploadStatusFileList" class="upload-status-file-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-save" onclick="saveBtn()">Save</button>
+                    <button class="btn-cancel" onclick="cancelBtn()">Cancel</button>
+                </div>
+            </div>
+            <!-- RIGHT COLUMN -->
+            <div class="column-box right-panel">
+                <h2 class="page-title"></h2>
+                <div class="card">
+                    <h3 class="card-title">Documents</h3><br>
+                    <div class="stored-docs-section">
+                        <label class="file-link" onclick="toggleDocList('insuranceDocsList')"
+                            style="cursor:pointer; display:block; padding-bottom: 5px;">
+                            Insurance Document <span id="insuranceCount"
+                                style="font-weight:bold; color:inherit;">(0)</span>
+                        </label>
+                        <ul id="insuranceDocsList" class="doc-list"
+                            style="list-style-type: none; padding-left: 0; margin-bottom: 15px; display: none;"></ul>
+                    </div>
+                    <div class="stored-docs-section">
+                        <label class="file-link" onclick="toggleDocList('shippingDocsList')"
+                            style="cursor:pointer; display:block; padding-bottom: 5px;">
+                            Shipping Documents <span id="shippingCount"
+                                style="font-weight:bold; color:inherit;">(0)</span>
+                        </label>
+                        <ul id="shippingDocsList" class="doc-list"
+                            style="list-style-type: none; padding-left: 0; margin-bottom: 15px; display: none;"></ul>
+                    </div>
+                    <div class="stored-docs-section">
+                        <label class="file-link" onclick="toggleDocList('additionalDocsList')"
+                            style="cursor:pointer; display:block; padding-bottom: 5px;">
+                            Additional Documents <span id="additionalCount"
+                                style="font-weight:bold; color:inherit;">(0)</span>
+                        </label>
+                        <ul id="additionalDocsList" class="doc-list"
+                            style="list-style-type: none; padding-left: 0; display: none;"></ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Notes</h3>
+                    <textarea class="notes-box" id="notes"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- Event History -->
+        <div class="card">
+            <div id="eventHistorySection">
+                <table class="event-table">
+                    <thead>
+                        <tr>
+                            <th>Trade Show ID</th>
+                            <th>Trade Show Name</th>
+                            <th>Trade Show Location</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Responsible Team</th>
+                            <th>Event Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventHistoryBody">
+                    </tbody>
+                </table>
+                <div id="overviewPagination" class="pagination-container"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <!-- Inventory Tab Section -->
+    <div id="inventory-section" class="main-section">
+        <div class="column-box">
+            <h2 class="page-title">Trade Show Inventory</h2>
+            <!-- TOP BAR -->
+            <div class="inventory-header">
+                <!-- LEFT: FILTER -->
+                <div class="filter-section">
+                    <label>Event Status</label>
+                    <select id="statusSelect" required>
+                        <option>Select Status</option>
+                        <option>Planned</option>
+                        <option>Active</option>
+                        <option>Closed</option>
+                    </select>
+                    <label for="">Event Name </label>
+                    <select id="eventName" required>
+                        <option value="">Select Event</option>
+                    </select>
+                    <button class="btn-blue" onclick="fetchEventItems()"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
+                            y="0px" width="20" height="20" viewBox="0 0 30 30">
+                            <path
+                                d="M 13 3 C 7.4886661 3 3 7.4886661 3 13 C 3 18.511334 7.4886661 23 13 23 C 15.396652 23 17.59741 22.148942 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148942 17.59741 23 15.396652 23 13 C 23 7.4886661 18.511334 3 13 3 z M 13 5 C 17.430666 5 21 8.5693339 21 13 C 21 17.430666 17.430666 21 13 21 C 8.5693339 21 5 17.430666 5 13 C 5 8.5693339 8.5693339 5 13 5 z">
+                            </path>
+                        </svg> Select</button>
+                    &nbsp;&nbsp;
+                    <button class="btn-blue" id="btnSaveItem" onclick="saveitem()">💾 Save Item</button>
+                    <button class="btn-blue" id="btnGenInvoice" onclick="createInvoice()">🧾 Generate Invoice</button>
+                    <button class="btn-blue" id="btnGenMemo" onclick="createMemo()">📝 Generate Memo</button>
+                    <button class="btn-blue" id="btnScanItem" onclick="openPopup()">📦 Scan Item</button>
+                    <div id="popupForm" class="popup-overlay">
+                        <div class="popup-content">
+                            <h3>Add Item</h3>
+                            <div class="form-grid-popup">
+                                <div class="form-group">
+                                    <label>Event Name</label>
+                                    <input type="text" id="eventformname" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trade Show ID</label>
+                                    <input type="text" id="Trade_Show_ID" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Lot</label>
+                                    <select id="lot">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" id="description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Pcs</label>
+                                    <input type="number" id="pcs">
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight</label>
+                                    <input type="number" id="weight" step="any">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cost</label>
+                                    <input type="number" id="cost" step="any">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" id="price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <input type="number" id="total">
+                                </div>
+                                <div class="form-group">
+                                    <label>COO</label>
+                                    <input type="text" id="coo">
+                                </div>
+                                <div class="form-group">
+                                    <label>Treat</label>
+                                    <input type="text" id="treat">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cert 1</label>
+                                    <input type="text" id="cert1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cert 2</label>
+                                    <input type="text" id="cert2">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cert 3</label>
+                                    <input type="text" id="cert3">
+                                </div>
+                                <div class="form-group">
+                                    <label>Item Status</label>
+                                    <input type="text" id="itemstatus">
+                                </div>
+                            </div>
+                            <div class="popup-actions">
+                                <button class="btn-save" onclick="addItem()">Save</button>
+                                <button class="btn-cancel" onclick="closePopup()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-blue" id="inventoryExportBtn">📤Export</button>
+                </div>
+            </div>
+            <div class="top-right-bar">
+                <div class="inventory-table-container">
+                    <table class="inventory-table">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th>Sr.</th>
+                                <th>Event</th>
+                                <th>Trade Show ID</th>
+                                <th>Lot</th>
+                                <th>Description</th>
+                                <th>Pcs</th>
+                                <th>Weight</th>
+                                <th>Cost</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>COO</th>
+                                <th>Treat</th>
+                                <th>Cert 1</th>
+                                <th>Cert 2</th>
+                                <th>Cert 3</th>
+                                <th class="status-column">Item Status</th>
+                                <th class="status-column">Log Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="inventoryPagination" class="pagination-container"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <!-- Scan Log Tab -->
+    <div id="scanlog-section" class="main-section">
+        <div class="column-box">
+            <h2 class="page-title">Scan Log</h2>
+            <!-- FILTER -->
+            <div class="filter-section">
+                <label>Event Status</label>
+                <select id="scanStatusSelect" required>
+                    <option value="">Select Status</option>
+                    <option>Planned</option>
+                    <option>Active</option>
+                    <option>Closed</option>
+                </select>
+                <label>Event Name</label>
+                <select id="scanEventName" required>
+                    <option value="">Select Event</option>
+                </select>
+                <button class="btn-blue" onclick="fetchScanLogs()">
+                    🔍 Select
+                </button>
+                <button class="btn-blue" id="scanExportBtn">📤Export</button>
+            </div>
+            <!-- TABLE -->
+            <div class="table-container">
+                <table id="scanLogTable">
+                    <thead>
+                        <tr>
+                            <th class="col-sr">Sr.</th>
+                            <th class="col-event">Event</th>
+                            <th class="col-tsid">Trade Show ID</th>
+                            <th class="col-lot">Lot</th>
+                            <th class="col-description">Description</th>
+                            <th class="status-column">Item Status</th>
+                            <th class="status-column">Warehouse Out</th>
+                            <th class="status-column">Trade Show In</th>
+                            <th class="status-column">Trade Show Out</th>
+                            <th class="status-column">Warehouse In</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scanLogBody">
+                    </tbody>
+                </table>
+                <div id="scanLogPagination" class="pagination-container"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <!-- InterTracking Movement Tab -->
+    <div id="intertransfer-section" class="main-section">
+        <!-- Event Selection -->
+        <div class="section-card">
+            <div class="imt-header">
+                <div class="imt-top-fields">
+                    <div class="imt-field-group">
+                        <label for="trade_show_id">Trade Show ID</label>
+                        <input type="text" id="trade_show_id" readonly>
+                    </div>
+                    <div class="imt-field-group">
+                        <label for="event_name">Event Name</label>
+                        <input type="text" id="event_name" readonly>
+                    </div>
+                </div>
+                <div class="imt-search-wrap">
+                    <div class="imt-selected-container" id="imtSelectedContainer">
+                        <input type="text" id="imtLotSearch" placeholder="Search Lot No..." autocomplete="off">
+                    </div>
+                    <div class="imt-dropdown" id="imtLotDropdown"></div>
+                </div>
+
+                <button class="btn-blue" onclick="saveInterTransferTracking()">Save</button>
+                <button class="btn-blue" id="bulkUpdateBtn" onclick="openBulkUpdatePopup()" disabled>Bulk
+                    Update</button>
+            </div>
+        </div>
+        <!-- Transfer Table -->
+        <div class="section-card">
+            <div class="imt-table-wrapper">
+                <table class="custom-table" id="itmTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="imtSelectAll">
+                            </th>
+                            <th>Lot No</th>
+                            <th>Description</th>
+                            <th>Lot Status</th>
+                            <th>From Location</th>
+                            <th>To Location</th>
+                            <th>Handover By</th>
+                            <th>Date</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itmTableBody">
+                        <!-- Rows will append here -->
+                    </tbody>
+                </table>
+                <div id="imtPagination" class="pagination-container"></div>
+            </div>
+        </div>
+    </div>
+    <div class="bulk-popup-overlay" id="bulkPopup">
+        <div class="bulk-popup">
+            <h3>Bulk Update Locations</h3>
+            <div class="bulk-grid">
+                <div class="bulk-field">
+                    <label>From Location</label>
+                    <select id="bulkFromLocation">
+                        <option value="">Select From</option>
+                        <option value="USA">USA</option>
+                        <option value="Dubai">Dubai</option>
+                        <option value="Jaipur">Jaipur</option>
+                    </select>
+                </div>
+                <div class="bulk-field">
+                    <label>To Location</label>
+                    <select id="bulkToLocation">
+                        <option value="">Select To</option>
+                        <option value="USA">USA</option>
+                        <option value="Dubai">Dubai</option>
+                        <option value="Jaipur">Jaipur</option>
+                    </select>
+                </div>
+            </div>
+            <div class="bulk-actions">
+                <button class="btn-blue" onclick="applyBulkUpdate()">
+                    Apply
+                </button>
+                <button class="btn-cancel" onclick="closeBulkUpdatePopup()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="saving-overlay" id="savingOverlay">
+        <div class="saving-popup">
+            <div class="saving-spinner"></div>
+            <div class="saving-text" id="savingText">
+                Saving Items...
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <!-- InterTracking Movement Log Tab -->
+    <div id="intertransfer-log-section" class="main-section">
+        <div class="column-box">
+            <h2 class="page-title">InterTracking Movement Log</h2>
+            <div class="filter-section">
+                <label>Event Status</label>
+                <select id="logStatusSelect" required>
+                    <option value="">Select Status</option>
+                    <option>Planned</option>
+                    <option>Active</option>
+                    <option>Closed</option>
+                </select>
+                <label>Event Name</label>
+                <select id="logEventName" required>
+                    <option value="">Select Event</option>
+                </select>
+                <button class="btn-blue" onclick="fetchInterTransferLog()">
+                    🔍 Select
+                </button>
+                <button class="btn-blue" id="logExportBtn">📤Export</button>
+            </div>
+            <div class="table-container">
+                <table id="interTransferLogTable">
+                    <thead>
+                        <tr>
+                            <th class="col-sr">Sr.</th>
+                            <th class="col-event">Event</th>
+                            <th class="col-tsid">Trade Show ID</th>
+                            <th class="col-lot">Lot</th>
+                            <th class="col-description">Description</th>
+                            <th class="col-status">Lot Status</th>
+                            <th class="col-location">From Location</th>
+                            <th class="col-location">To Location</th>
+                            <th class="col-user">Handover By</th>
+                            <th class="col-date">Date</th>
+                            <th class="col-notes">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="interTransferLogBody">
+                    </tbody>
+                </table>
+                <div id="interTransferLogPagination" class="pagination-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <!-- Application scripts. ORDER MATTERS: plain scripts share global scope; do not reorder. -->
+    <!-- core -->
+    <script src="./js/core/ui-feedback.js"></script>
+    <script src="./js/core/pagination.js"></script>
+    <script src="./js/core/date-utils.js"></script>
+    <script src="./js/core/common-utils.js"></script>
+    <script src="./js/core/navigation.js"></script>
+    <!-- trade-show -->
+    <script src="./js/trade-show/trade-show-dropdowns.js"></script>
+    <script src="./js/trade-show/trade-show-history.js"></script>
+    <script src="./js/trade-show/trade-show-form.js"></script>
+    <script src="./js/trade-show/documents/documents-state.js"></script>
+    <script src="./js/trade-show/documents/documents-zoho.js"></script>
+    <script src="./js/trade-show/documents/documents-existing.js"></script>
+    <script src="./js/trade-show/documents/documents-queue.js"></script>
+    <!-- inventory -->
+    <script src="./js/inventory/event-selector.js"></script>
+    <script src="./js/inventory/lot-master.js"></script>
+    <script src="./js/inventory/inventory-table.js"></script>
+    <script src="./js/inventory/inventory-scan-popup.js"></script>
+    <script src="./js/inventory/inventory-save.js"></script>
+    <script src="./js/inventory/inventory-invoice-memo.js"></script>
+    <script src="./js/inventory/inventory-buttons.js"></script>
+    <!-- scan-log -->
+    <script src="./js/scan-log/scan-log-service.js"></script>
+    <script src="./js/scan-log/scan-log-table.js"></script>
+    <!-- intertransfer-log -->
+    <script src="./js/intertransfer-log/intertransfer-log.js"></script>
+    <!-- intertransfer -->
+    <script src="./js/intertransfer/imt-state.js"></script>
+    <script src="./js/intertransfer/imt-user.js"></script>
+    <script src="./js/intertransfer/imt-lot-master.js"></script>
+    <script src="./js/intertransfer/imt-load.js"></script>
+    <script src="./js/intertransfer/imt-table.js"></script>
+    <script src="./js/intertransfer/imt-search.js"></script>
+    <script src="./js/intertransfer/imt-bulk-update.js"></script>
+    <script src="./js/intertransfer/imt-save.js"></script>
+    <!-- export -->
+    <script src="./js/export/excel-export.js"></script>
+    <!-- core -->
+    <script src="./js/core/app-init.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,98 @@
+/* ============================================================================
+   css/inventory/inventory-toolbar.css
+   Inventory tab: header toolbar, filter section, right-side actions, status colors, page size.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* ---------------------------------------------------------------------------- */
+/* Inventory Tab Section */
+/* INVENTORY TOOLBAR */
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+/* LEFT FILTER */
+.filter-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-section select,
+.filter-section input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 170px;
+}
+
+/* Fix choices.js dropdown inside filter section */
+.filter-section .choices {
+    width: 170px !important;
+    margin-bottom: 0;
+}
+
+.filter-section .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 4px;
+}
+
+.filter-section .choices__inner {
+    min-height: 33px;
+    height: 33px;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    background: white;
+}
+
+/* RIGHT BUTTONS */
+.right-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transform: translateY(-4px);
+}
+
+/* PAGINATION RIGHT ALIGN */
+.table-pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    margin: 12px 0 8px 0;
+}
+
+/* STATUS COLORS */
+.status-available {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.status-sold {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.page-size {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.status-column {
+    width: 120px;
+}
+
+.action-column {
+    width: 200px;
+    text-align: center;
+}

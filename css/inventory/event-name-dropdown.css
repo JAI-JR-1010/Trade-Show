@@ -1,0 +1,56 @@
+/* ============================================================================
+   css/inventory/event-name-dropdown.css
+   Inventory Event Name dropdown (Choices.js) and pagination row.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Event Name */
+.dropdown-section .choices {
+    width: 180px !important;
+}
+
+.dropdown-section .choices__inner {
+    height: 24px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+}
+
+.choices__list--dropdown {
+    position: absolute !important;
+    z-index: 9999 !important;
+    background-color: #ecf9ee !important;
+    border: 1px solid #28a745 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+}
+
+.choices__list--dropdown .choices__item--choice {
+    padding: 8px 12px;
+    font-size: 12px;
+    background-color: transparent !important;
+    color: #0f172a !important;
+}
+
+.choices__list--dropdown .choices__item--choice.is-highlighted,
+.choices__list--dropdown .choices__item--choice.is-selected,
+.choices__list--dropdown .choices__item--choice:hover {
+    background-color: #1f4e85 !important;
+    color: #ffffff !important;
+}
+
+.form-group .choices__inner {
+    border-radius: 8px;
+}
+
+
+/* paginaation and Event Name */
+.event-pagination-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}

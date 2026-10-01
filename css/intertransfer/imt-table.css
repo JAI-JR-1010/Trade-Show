@@ -1,0 +1,115 @@
+/* ============================================================================
+   css/intertransfer/imt-table.css
+   Inter-Movement Tracking: table wrapper, table, column widths.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* ================================================================================================================ */
+
+   /* INTER MOVEMENT TRACKING */
+
+   /* TABLE WRAPPER */
+.imt-table-wrapper {
+    width: 100%;
+      overflow-x: auto;
+    overflow-y: visible;
+}
+
+   /* TABLE */
+.custom-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    margin-top: 15px;
+    table-layout: fixed;
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.custom-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+.custom-table td {
+    white-space: normal;
+    word-break: break-word;
+}
+
+.custom-table input,
+.custom-table select,
+.custom-table textarea {
+    width: 100%;
+    padding: 7px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.custom-table textarea {
+    resize: vertical;
+    min-height: 42px;
+}
+
+   /* COLUMN WIDTHS */
+/* Checkbox */
+#itmTable th:nth-child(1),
+#itmTable td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+/* Lot No */
+#itmTable th:nth-child(2),
+#itmTable td:nth-child(2) {
+    width: 100px;
+}
+
+/* Description */
+#itmTable th:nth-child(3),
+#itmTable td:nth-child(3) {
+    width: 180px;
+}
+
+/* Status */
+#itmTable th:nth-child(4),
+#itmTable td:nth-child(4) {
+    width: 100px;
+}
+
+/* From */
+#itmTable th:nth-child(5),
+#itmTable td:nth-child(5) {
+    width: 130px;
+}
+
+/* To */
+#itmTable th:nth-child(6),
+#itmTable td:nth-child(6) {
+    width: 130px;
+}
+
+/* Handover */
+#itmTable th:nth-child(7),
+#itmTable td:nth-child(7) {
+    width: 150px;
+}
+
+/* Date */
+#itmTable th:nth-child(8),
+#itmTable td:nth-child(8) {
+    width: 140px;
+}
+
+/* Notes */
+#itmTable th:nth-child(9),
+#itmTable td:nth-child(9) {
+    width: 250px;
+}

@@ -1,0 +1,57 @@
+/* ============================================================================
+   css/forms/form-controls.css
+   Form grid, form-group, base input/select/textarea styles.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* FORM GRID (5 columns per row) */
+.form-grid {
+    display: grid;
+    /* grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 10px;
+    margin-bottom: 2px;
+    color: #444;
+    font-weight: bold;
+}
+
+/* Fix dropdown width inside grid */
+.form-group input,
+.form-group select,
+.choices {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 1px solid #2b6cb0;
+}
+
+/* Notes textarea full width */
+textarea {
+    width: 100%;
+    min-height: 90px;
+}

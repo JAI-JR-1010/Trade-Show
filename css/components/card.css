@@ -1,0 +1,22 @@
+/* ============================================================================
+   css/components/card.css
+   Generic card box and card headings.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+/* Cards */
+.card {
+    background: white;
+    padding: 4px 12px 12px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1d5db;
+    padding-top: 0px;
+}
+
+.card h3,
+.inner-section h3 {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
