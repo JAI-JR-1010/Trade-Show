@@ -21,7 +21,7 @@ function renderPaginationControls(containerId, currentPage, totalPages, onPageCh
     const prevDisabled = currentPage <= 1 ? "disabled" : "";
     html += `<button class="pg-btn" ${prevDisabled} onclick="${onPageChangeFnName}(${currentPage - 1})">Previous</button>`;
     // Page numbers algorithm with smart ellipsis
-    const startPage = Math.max(1, currentPage - 2);
+    let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);
     if (currentPage <= 3) {
         endPage = Math.min(totalPages, 5);

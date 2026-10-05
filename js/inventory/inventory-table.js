@@ -96,7 +96,8 @@ function groupTotalHtml(g) {
         <td colspan="6" class="inv-group-total-label">${escHtml(g.name)} Total</td>
         <td data-sum="${g.id}" data-metric="pcs">${g.sums.pcs}</td>
         <td data-sum="${g.id}" data-metric="weight">${fmtWeight(g.sums.weight)}</td>
-        <td></td><td></td>
+        <td data-sum="${g.id}" data-metric="cost">${fmtMoney(g.sums.cost)}</td>
+        <td data-sum="${g.id}" data-metric="price">${fmtMoney(g.sums.price)}</td>
         <td data-sum="${g.id}" data-metric="total">${fmtMoney(g.sums.total)}</td>
         <td colspan="9"></td>
     </tr>`;
@@ -193,6 +194,8 @@ function refreshInventoryTotals(changedIdx) {
         const q = (m) => document.querySelector(`[data-sum="${g.id}"][data-metric="${m}"]`);
         if (q("pcs")) q("pcs").textContent = g.sums.pcs;
         if (q("weight")) q("weight").textContent = fmtWeight(g.sums.weight);
+        if (q("cost")) q("cost").textContent = fmtMoney(g.sums.cost);
+        if (q("price")) q("price").textContent = fmtMoney(g.sums.price);
         if (q("total")) q("total").textContent = fmtMoney(g.sums.total);
     };
     groups.forEach(g => { setSum(g); g.subgroups.forEach(setSum); });

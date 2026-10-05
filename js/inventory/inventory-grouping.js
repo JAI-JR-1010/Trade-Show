@@ -23,13 +23,15 @@ function normalizeInventoryCategory(value) {
 }
 
 function sumRows(data, idxList) {
-    let pcs = 0, weight = 0, total = 0;
+    let pcs = 0, weight = 0, cost = 0, price = 0, total = 0;
     idxList.forEach(i => {
         pcs += toNum(data[i].Pcs);
         weight += toNum(data[i].Weight);
+        cost += toNum(data[i].Cost);
+        price += toNum(data[i].Price);
         total += toNum(data[i].Total);
     });
-    return { pcs: pcs, weight: round2(weight), total: round2(total) };
+    return { pcs: pcs, weight: round2(weight), cost: round2(cost), price: round2(price), total: round2(total) };
 }
 
 // Returns [{id, name, rows:[idx], sums}].
