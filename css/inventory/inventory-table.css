@@ -29,3 +29,12 @@
 .inventory-table thead {
     background-color: #f3f4f6;
 }
+
+.inv-group-total-row {
+    background-color: #f8fafc;
+    font-weight: 700;
+}
+
+.inv-group-total-label {
+    text-align: right !important;
+}

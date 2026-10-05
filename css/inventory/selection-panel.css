@@ -1,0 +1,23 @@
+/* ============================================================================
+   css/inventory/selection-panel.css
+   Selection panel (customer, visit date, comment) above the trade show list.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+.selection-panel {
+    margin: 12px 0; padding: 12px 14px;
+    border: 1px solid #d1d5db; border-radius: 8px; background: #fafbfd;
+}
+.selection-panel.hidden { display: none; }
+.sel-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.sel-field { display: flex; flex-direction: column; gap: 4px; min-width: 200px; flex: 1; }
+.sel-field label { font-size: 12px; font-weight: 600; color: #374151; }
+.sel-field input, .sel-field select, .sel-field textarea {
+    padding: 6px 8px; font-size: 13px; border: 1px solid #cbd5e1; border-radius: 4px;
+}
+.sel-field textarea { resize: vertical; min-height: 38px; }
+.sel-comment { flex: 2; min-width: 280px; }
+.sel-actions { display: flex; gap: 8px; align-items: center; }
+.sel-badge { padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.sel-open { background: #dbeafe; color: #1d4ed8; }
+.sel-final { background: #dcfce7; color: #15803d; }

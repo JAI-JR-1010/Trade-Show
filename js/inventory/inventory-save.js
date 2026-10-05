@@ -8,6 +8,8 @@
 //   core/ui-feedback.js  ->  showCustomAlert
 //   inventory/event-selector.js  ->  eventChoices
 //   scan-log/scan-log-service.js  ->  saveSingleScan
+//   inventory/inventory-model.js  ->  creatorDelete
+//   inventory/selection-panel.js  ->  resetSelectionState
 // ============================================================================
 
 // ==============================
@@ -16,7 +18,12 @@
 function saveitem() {
     console.log("saveitem Function Triggered");
     const data = window.allInventoryData || [];
-    if (data.length === 0) {
+    if (window.currentSelection && window.currentSelection.id) {
+        showCustomAlert("A selection is open. Use Save Selection, or start a New Selection to save the event list.");
+        return;
+    }
+    const removedItems = window.removedInventoryItems || [];
+    if (data.length === 0 && removedItems.length === 0) {
         showCustomAlert("No items in the table to save.");
         return;
     }
@@ -24,7 +31,7 @@ function saveitem() {
     let uniqueEvents = new Set();
     data.forEach((record, index) => {
         if (record.Event) uniqueEvents.add(record.Event);
-        recordsData.push({
+        const row = {
             "Sr": (index + 1).toString(),
             "Event": record.Event || "",
             "Trade_Show_ID": record.Trade_Show_ID || "",
@@ -42,7 +49,10 @@ function saveitem() {
             "Cert_3": record.Cert_3 || "",
             "Item_Status": record.Item_Status || "",
             "Log_Status": record.Log_Status || ""
-        });
+        };
+        const visitDrafts = record._customerVisitDrafts || [];
+        if (visitDrafts.length) row.Customer_Visit = visitDrafts;
+        recordsData.push(row);
     });
 
     // Prepare promises to fetch existing records for all unique events in the table
@@ -73,27 +83,27 @@ function saveitem() {
             });
             if (matchingRecord && matchingRecord.ID) {
                 // Determine update map
+                let updateData = {
+                    "Description": row.Description,
+                    "Pcs": row.Pcs,
+                    "Weight": row.Weight,
+                    "Cost": row.Cost,
+                    "Price": row.Price,
+                    "Total": row.Total,
+                    "COO": row.COO,
+                    "Treat": row.Treat,
+                    "Cert_1": row.Cert_1,
+                    "Cert_2": row.Cert_2,
+                    "Cert_3": row.Cert_3,
+                    "Item_Status": row.Item_Status,
+                    "Log_Status": row.Log_Status
+                };
+                if (row.Customer_Visit) updateData.Customer_Visit = row.Customer_Visit;
                 let updateConfig = {
                     app_name: "feiny-app",
                     report_name: "All_Inventory_Items",
                     id: matchingRecord.ID, // Target record ID
-                    payload: {
-                        "data": {
-                            "Description": row.Description,
-                            "Pcs": row.Pcs,
-                            "Weight": row.Weight,
-                            "Cost": row.Cost,
-                            "Price": row.Price,
-                            "Total": row.Total,
-                            "COO": row.COO,
-                            "Treat": row.Treat,
-                            "Cert_1": row.Cert_1,
-                            "Cert_2": row.Cert_2,
-                            "Cert_3": row.Cert_3,
-                            "Item_Status": row.Item_Status,
-                            "Log_Status": row.Log_Status
-                        }
-                    }
+                    payload: { "data": updateData }
                 };
                 // Push update promise
                 updatePromises.push(ZOHO.CREATOR.DATA.updateRecordById(updateConfig));
@@ -101,6 +111,10 @@ function saveitem() {
                 // No match found -> we need to ADD
                 recordsToAdd.push(row);
             }
+        });
+        // Items removed from the open list: delete their saved records
+        removedItems.forEach(r => {
+            updatePromises.push(creatorDelete("All_Inventory_Items", r.ID));
         });
         let addPromise = Promise.resolve();
         if (recordsToAdd.length > 0) {
@@ -113,7 +127,13 @@ function saveitem() {
         }
         Promise.all([addPromise, ...updatePromises]).then(results => {
             console.log("Updates and Adds completed:", results);
-            showCustomAlert("✅ " + recordsData.length + " Items Saved/Updated Successfully");
+            showCustomAlert("✅ " + recordsData.length + " Items Saved/Updated" + (removedItems.length ? ", " + removedItems.length + " removed" : "") + " Successfully");
+            window.removedInventoryItems = [];
+            data.forEach(r => {
+                r._dirty = false;
+                delete r._customerVisitDrafts;
+            });
+            if (typeof resetSelectionState === "function") resetSelectionState();
             if (typeof eventChoices !== "undefined" && eventChoices) {
                 eventChoices.setChoiceByValue("");
             }

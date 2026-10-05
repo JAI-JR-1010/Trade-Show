@@ -5,28 +5,32 @@
 // Defines : lotChoices, allLotData, loadLotMaster, lotSelectElement, getCertificatesBySKU, clearLotFields
 // Uses    : (defined in other files)
 //   core/common-utils.js  ->  getLookupDisplay
+//   inventory/inventory-model.js  ->  firstField
+//   inventory/inventory-config.js  ->  INV_CFG
 // ============================================================================
 
 // check
 let lotChoices;
 let allLotData = []; // Store fetched lot mapping data
+let lotMasterPromise = null;
 
 // ==============================
 // Get Lot Master Details
 // ==============================
 function loadLotMaster() {
+    if (lotMasterPromise) return lotMasterPromise;
     var config = {
         app_name: "feiny-app",
         report_name: "All_Lot_Master",
         max_records: 1000
     };
-    ZOHO.CREATOR.DATA.getRecords(config)
+    lotMasterPromise = ZOHO.CREATOR.DATA.getRecords(config)
         .then(function (response) {
             console.log("Lot Master Data:", response);
             const data = response.data;
             allLotData = data || [];
             const lotDropdown = document.getElementById("lot");
-            if (!lotDropdown) return;
+            if (!lotDropdown) return allLotData;
             if (typeof lotChoices !== "undefined" && lotChoices) {
                 lotChoices.destroy();
             }
@@ -46,10 +50,14 @@ function loadLotMaster() {
                 shouldSort: false,
                 removeItemButton: true
             });
+            return allLotData;
         })
         .catch(function (error) {
             console.log("Error loading Lot Master:", error);
+            lotMasterPromise = null;
+            return allLotData;
         });
+    return lotMasterPromise;
 }
 
 // ==============================
@@ -73,12 +81,14 @@ if (lotSelectElement) {
                 document.getElementById('description').value = shortDescription;
             if (document.getElementById('long_description'))
                 document.getElementById('long_description').value = longDescription;
-            // Pcs = Stock On Hand (same as invoice_creation)
+            // Pcs / Weight default to ON-HAND amounts (not stock). Field names live in inventory-config.js.
+            const onHandPcs = firstField(selectedRecord, INV_CFG.onHandPcsFields);
+            const onHandWeight = firstField(selectedRecord, INV_CFG.onHandWeightFields);
+            if (onHandPcs === "") console.warn("No on-hand pcs field found in Lot Master. Check INV_CFG.onHandPcsFields.", selectedRecord);
             if (document.getElementById('pcs'))
-                document.getElementById('pcs').value = selectedRecord.Stock_On_Hand || "";
-            // Weight — multi-field fallback matching invoice_creation
+                document.getElementById('pcs').value = onHandPcs;
             if (document.getElementById('weight'))
-                document.getElementById('weight').value = selectedRecord.Weight_Ct || selectedRecord.Weight_grams || selectedRecord.weight || "";
+                document.getElementById('weight').value = onHandWeight;
             // Cost — Price_Per_carat / Final_Cost / Cost_Amount fallback (invoice_creation pattern)
             if (document.getElementById('cost'))
                 document.getElementById('cost').value = selectedRecord.Cost_Amount || "";

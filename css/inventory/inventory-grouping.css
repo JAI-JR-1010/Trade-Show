@@ -1,0 +1,32 @@
+/* ============================================================================
+   css/inventory/inventory-grouping.css
+   Grouped trade show list: group header rows, inline inputs, row buttons, confirm dialog.
+   Loaded in order from trade_show_master.html - do not reorder.
+============================================================================ */
+
+.inv-group-row td { font-weight: 700; background: #e8eef7; border-top: 2px solid #9db2d1; }
+.inv-group-l2 td { background: #f4f7fb; font-weight: 600; border-top: 1px solid #c3d0e4; }
+.inv-group-l2 .inv-group-label { padding-left: 24px; }
+.inv-group-label { cursor: pointer; user-select: none; }
+.inv-group-count { font-weight: 400; color: #6b7280; margin-left: 6px; }
+
+.inv-inline-input {
+    width: 100%; min-width: 60px; box-sizing: border-box;
+    padding: 3px 5px; font-size: 12px;
+    border: 1px solid #cbd5e1; border-radius: 4px; background: #fffef5;
+}
+.inv-inline-input:focus { outline: 2px solid #2b8aef; background: #fff; }
+.inv-in-Description { min-width: 160px; }
+.inv-dirty td { background: #fffbe6; }
+
+.inv-actions { white-space: nowrap; }
+.inv-row-btn { border: none; background: transparent; cursor: pointer; font-size: 14px; padding: 2px 6px; }
+.inv-row-remove { color: #dc2626; }
+.inv-row-btn:hover { background: #eef2f7; border-radius: 4px; }
+
+.inv-confirm-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4);
+    display: flex; align-items: center; justify-content: center; z-index: 100001;
+}
+.inv-confirm-box { background: #fff; padding: 20px 24px; border-radius: 8px; min-width: 280px; text-align: center; }
+.inv-confirm-actions { display: flex; gap: 10px; justify-content: center; margin-top: 14px; }

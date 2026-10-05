@@ -52,3 +52,103 @@
 
     margin: 40px auto;
 }
+
+.customer-action-content {
+    width: min(95%, 900px);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.customer-action-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.customer-action-comments {
+    grid-column: 1 / -1;
+}
+
+.customer-action-comments textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.customer-action-local-status {
+    min-height: 1.25em;
+    margin: 12px 0 0;
+    color: #475569;
+    font-size: 13px;
+}
+
+.customer-action-list-section {
+    margin-top: 18px;
+}
+
+.customer-action-list-section h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.customer-action-list-wrap {
+    max-height: 240px;
+    overflow: auto;
+    border: 1px solid #d1d5db;
+}
+
+.customer-action-list {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.customer-action-list th,
+.customer-action-list td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+.customer-action-list th {
+    position: sticky;
+    top: 0;
+    background: #f3f4f6;
+}
+
+.customer-action-comment-cell {
+    white-space: pre-wrap;
+}
+
+.customer-action-empty {
+    margin: 0;
+    padding: 10px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.customer-action-remove {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b42318;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.inv-customer-action {
+    white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+    .customer-action-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-action-comments {
+        grid-column: auto;
+    }
+}

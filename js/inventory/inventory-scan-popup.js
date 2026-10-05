@@ -225,6 +225,7 @@ function addItem() {
                 _addedAt: Date.now(),
                 _lastScanAt: Date.now()
             };
+            enrichInventoryRecord(newRecord);
             window.allInventoryData.push(newRecord);
             updateScanLog(event, tradeShowId, lot, description, status, 1);
             const newPage = Math.ceil(window.allInventoryData.length / window.inventoryRowsPerPage);
@@ -295,6 +296,7 @@ function addItem() {
                 _addedAt: Date.now(),
                 _lastScanAt: Date.now()
             };
+            enrichInventoryRecord(newRecord);
             window.allInventoryData.push(newRecord);
             updateScanLog(event, tradeShowId, lot, description, status, 1);
             const newPage = Math.ceil(window.allInventoryData.length / window.inventoryRowsPerPage);
