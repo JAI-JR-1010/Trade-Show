@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="./css/inventory/inventory-toolbar.css">
     <link rel="stylesheet" href="./css/inventory/inventory-popup.css">
     <link rel="stylesheet" href="./css/inventory/inventory-table.css">
+    <link rel="stylesheet" href="./css/inventory/inventory-grouping.css">
+    <link rel="stylesheet" href="./css/inventory/selection-panel.css">
+    <link rel="stylesheet" href="./css/inventory/sku-details.css">
     <!-- components -->
     <link rel="stylesheet" href="./css/components/button-blue.css">
     <!-- inventory -->
@@ -357,6 +360,47 @@
                             </div>
                         </div>
                     </div>
+                    <div id="customerActionPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="customerActionTitle">
+                        <div class="popup-content customer-action-content">
+                            <h3 id="customerActionTitle">Customer Action</h3>
+                            <div class="customer-action-fields">
+                                <div class="form-group">
+                                    <label for="customerActionName">Customer Name</label>
+                                    <select id="customerActionName"><option value="">Select Customer</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerActionVisitDate">Visit Date</label>
+                                    <input type="date" id="customerActionVisitDate">
+                                </div>
+                                <div class="form-group customer-action-comments">
+                                    <label for="customerActionComments">Comments</label>
+                                    <textarea id="customerActionComments" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <section class="customer-action-list-section" aria-labelledby="customerActionListTitle">
+                                <h4 id="customerActionListTitle">Customer Visits</h4>
+                                <div class="customer-action-list-wrap">
+                                    <table class="customer-action-list">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer Name</th>
+                                                <th>Visit Date</th>
+                                                <th>Comments</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="customerActionListBody"></tbody>
+                                    </table>
+                                    <p id="customerActionEmpty" class="customer-action-empty">No customer visits added yet.</p>
+                                </div>
+                            </section>
+                            <p id="customerActionLocalStatus" class="customer-action-local-status"></p>
+                            <div class="popup-actions">
+                                <button class="btn-save" id="btnSaveCustomerAction">Save Visit</button>
+                                <button class="btn-cancel" id="btnCancelCustomerAction">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn-blue" id="inventoryExportBtn">📤Export</button>
                 </div>
             </div>
@@ -383,6 +427,8 @@
                                 <th>Cert 3</th>
                                 <th class="status-column">Item Status</th>
                                 <th class="status-column">Log Status</th>
+                                <th>Actions</th>
+                                <th>Customer Action</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
@@ -584,6 +630,38 @@
         </div>
     </div>
 
+    <!-- SKU details popup (notes, images, documents) -->
+    <div id="skuDetailsModal" class="sku-modal" onclick="if(event.target===this) closeSkuDetails()">
+        <div class="sku-box">
+            <h3 id="skuDetailsTitle">SKU</h3>
+            <div class="sku-section">
+                <h4>Notes</h4>
+                <ul id="skuNotesList"></ul>
+                <div class="sku-add-row">
+                    <textarea id="skuNoteInput" rows="2" placeholder="Add a note"></textarea>
+                    <button class="btn-blue" onclick="addSkuNote()">Add</button>
+                </div>
+            </div>
+            <div class="sku-section">
+                <h4>Images</h4>
+                <div id="skuImgList"></div>
+                <div class="sku-add-row">
+                    <input type="file" id="skuImgInput" accept="image/*" multiple onchange="uploadSkuImages(this.files)">
+                </div>
+            </div>
+            <div class="sku-section">
+                <h4>Documents <span id="skuDocumentCount" class="sku-document-count">0/10</span></h4>
+                <div id="skuDocumentList"></div>
+                <div class="sku-add-row">
+                    <input type="file" id="skuDocumentInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv" multiple onchange="uploadSkuDocuments(this.files)">
+                </div>
+            </div>
+            <div class="popup-actions">
+                <button class="btn-cancel" onclick="closeSkuDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -603,10 +681,18 @@
     <script src="./js/trade-show/documents/documents-existing.js"></script>
     <script src="./js/trade-show/documents/documents-queue.js"></script>
     <!-- inventory -->
+    <script src="./js/inventory/inventory-config.js"></script>
+    <script src="./js/inventory/inventory-model.js"></script>
     <script src="./js/inventory/event-selector.js"></script>
     <script src="./js/inventory/lot-master.js"></script>
+    <script src="./js/inventory/inventory-grouping.js"></script>
     <script src="./js/inventory/inventory-table.js"></script>
+    <script src="./js/inventory/inventory-edit.js"></script>
+    <script src="./js/inventory/selection-service.js"></script>
+    <script src="./js/inventory/selection-panel.js"></script>
+    <script src="./js/inventory/sku-details.js"></script>
     <script src="./js/inventory/inventory-scan-popup.js"></script>
+    <script src="./js/inventory/customer-action.js"></script>
     <script src="./js/inventory/inventory-save.js"></script>
     <script src="./js/inventory/inventory-invoice-memo.js"></script>
     <script src="./js/inventory/inventory-buttons.js"></script>
